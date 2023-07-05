@@ -27,7 +27,7 @@
 		<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
 		<h2>이달의 해시태그</h2>
 		<c:forEach var="m" items="${hashtagList}">
-			<a href="${pageContext.request.contextPath}/hashtag?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">${m.word}(${m.cnt})</a>
+			<a href="${pageContext.request.contextPath}/cashbookByTag?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">${m.word}(${m.cnt})</a>
 		</c:forEach>
 		<table class="table table-bordered" style="table-layout: fixed;">
 			<tr>
