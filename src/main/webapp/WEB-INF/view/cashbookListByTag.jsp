@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>hashtagList</title>
+<title>cashbookByTag</title>
 <!-- Latest compiled and minified CSS -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -34,6 +34,22 @@
 				</tr>
 			</c:forEach>
 		</table>
+		<c:if test="${startPage>1}">
+			<a href="${pageContext.request.contextPath}/cashbookList?currentPage=${startPage-pagePerPage}">이전</a>
+		</c:if>
+		<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
+			<c:if test="${i==currentPage}">
+				${i}
+			</c:if>
+			<c:if test="${i!=currentPage}">
+				<a href="${pageContext.request.contextPath}/cashbookList?currentPage=${i}">
+					${i}
+				</a>
+			</c:if>
+		</c:forEach>
+		<c:if test="${endPage!=lastPage}">
+			<a href="${pageContext.request.contextPath}/cashbookList?currentPage=${startPage+pagePerPage}">다음</a>
+		</c:if>
 	</div>
 </body>
 </html>

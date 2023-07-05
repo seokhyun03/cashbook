@@ -15,7 +15,7 @@ import cash.vo.Cashbook;
 import cash.vo.Member;
 
 @WebServlet("/cashbook")
-public class CashbookController extends HttpServlet {
+public class CashbookListController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 세션 유효성 검사(로그인 확인)
@@ -41,13 +41,38 @@ public class CashbookController extends HttpServlet {
 		} else {
 			cashbookDate += "-" + targetDate;
 		}
+		CashbookDao cashbookDao = new CashbookDao();
+		int currentPage = 1;
+		if(request.getParameter("currentPage") != null) {
+			currentPage = Integer.parseInt(request.getParameter("currentPage"));
+		}
+		int totalRow = cashbookDao.selectCashbookListByDateCnt(member.getMemberId(), targetYear, targetMonth, targetDate);
+		int rowPerPage = 10;
+		int beginRow = (currentPage-1)*rowPerPage;
+		int lastPage = totalRow / rowPerPage;
+		if (totalRow % rowPerPage != 0) {
+			lastPage += 1;
+		}
+		
+	
+		int pagePerPage = 10;
+		int startPage = (currentPage-1) / pagePerPage * pagePerPage + 1;
+		int endPage = startPage + pagePerPage - 1;
+		if(endPage > lastPage) {
+			endPage = lastPage;
+		}
 
-		List<Cashbook> list = new CashbookDao().selectCashbookListByDate(member.getMemberId(), targetYear, targetMonth+1, targetDate);
+		List<Cashbook> list = cashbookDao.selectCashbookListByDate(member.getMemberId(), targetYear, targetMonth+1, targetDate, beginRow, rowPerPage);
 		
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);
 		request.setAttribute("targetDate", targetDate);
 		request.setAttribute("cashbookDate", cashbookDate);
+		request.setAttribute("currentPage", currentPage);
+		request.setAttribute("pagePerPage", pagePerPage);
+		request.setAttribute("startPage", startPage);
+		request.setAttribute("lastPage", lastPage);
+		request.setAttribute("endPage", endPage);
 		request.setAttribute("list", list);
 		// 이번달 달력에 가계목록의 모델값을 셋팅
 		request.getRequestDispatcher("/WEB-INF/view/cashbookList.jsp").forward(request, response);
