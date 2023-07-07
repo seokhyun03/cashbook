@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.dao.CashbookDao;
+import cash.service.CashbookService;
 import cash.vo.Cashbook;
 import cash.vo.Member;
 
 @WebServlet("/cashbook")
 public class CashbookListController extends HttpServlet {
+	private CashbookService cashbookService;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 세션 유효성 검사(로그인 확인)
@@ -41,12 +42,11 @@ public class CashbookListController extends HttpServlet {
 		} else {
 			cashbookDate += "-" + targetDate;
 		}
-		CashbookDao cashbookDao = new CashbookDao();
 		int currentPage = 1;
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		int totalRow = cashbookDao.selectCashbookListByDateCnt(member.getMemberId(), targetYear, targetMonth, targetDate);
+		int totalRow = cashbookService.getCashbookListByDateCnt(member.getMemberId(), targetYear, targetMonth, targetDate);
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
 		int lastPage = totalRow / rowPerPage;
@@ -62,7 +62,7 @@ public class CashbookListController extends HttpServlet {
 			endPage = lastPage;
 		}
 
-		List<Cashbook> list = cashbookDao.selectCashbookListByDate(member.getMemberId(), targetYear, targetMonth+1, targetDate, beginRow, rowPerPage);
+		List<Cashbook> list = cashbookService.getCashbookListByDate(member.getMemberId(), targetYear, targetMonth+1, targetDate, beginRow, rowPerPage);
 		
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);

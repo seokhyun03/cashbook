@@ -9,12 +9,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import cash.dao.*;
+import cash.service.CashbookService;
 import cash.vo.*;
 
 import java.util.*;
 
 @WebServlet("/cashbookByTag")
 public class CashbookListByTagController extends HttpServlet {
+	private CashbookService cashbookService;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 세션 유효성 검사(로그인 확인)
 		HttpSession session = request.getSession();
@@ -33,7 +36,7 @@ public class CashbookListByTagController extends HttpServlet {
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));
 		}
-		int totalRow = cashbookDao.selectCashbookListByHashtagCnt(member.getMemberId(), targetYear, targetMonth, word);
+		int totalRow = cashbookService.getCashbookListByHashtagCnt(member.getMemberId(), targetYear, targetMonth, word);
 		int rowPerPage = 10;
 		int beginRow = (currentPage-1)*rowPerPage;
 		int lastPage = totalRow / rowPerPage;
@@ -49,7 +52,7 @@ public class CashbookListByTagController extends HttpServlet {
 			endPage = lastPage;
 		}
 		
-		List<Cashbook> list = new CashbookDao().selectCashbookListByHashtag(member.getMemberId(), targetYear, targetMonth+1, word, beginRow, rowPerPage);
+		List<Cashbook> list = cashbookService.getCashbookListByHashtag(member.getMemberId(), targetYear, targetMonth+1, word, beginRow, rowPerPage);
 		
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);

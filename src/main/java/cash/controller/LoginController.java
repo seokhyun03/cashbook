@@ -8,13 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.dao.*;
+import cash.service.MemberService;
 import cash.vo.*;
 
 @SuppressWarnings("serial")
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
-
+	private MemberService memberService;
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// session 인증 검사 코드
 		HttpSession session = request.getSession();
@@ -32,8 +33,7 @@ public class LoginController extends HttpServlet {
 		
 		Member member = new Member(memberId, memberPw, null, null);
 		
-		MemberDao memberDao = new MemberDao();
-		Member loginMember = memberDao.selectMemberById(member);
+		Member loginMember = memberService.getMemberById(member);
 		
 		// 로그인 실패
 		if(loginMember == null) {
