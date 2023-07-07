@@ -6,7 +6,7 @@ import cash.vo.Hashtag;
 
 public class HashtagDao {
 	// 월별 해시태크의 수
-	public List<Map<String,Object>> selectWordCountByMonth(Connection conn, String memberId, int targetYear, int targetMonth) throws Exception{
+	public List<Map<String,Object>> selectWordCountByMonth(Connection conn, String memberId, int targetYear, int targetMonth) throws Exception {
 		List<Map<String,Object>> list = new ArrayList<>();
 		
 		PreparedStatement stmt = null;
