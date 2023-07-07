@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import cash.model.CashbookDao;
+import cash.dao.CashbookDao;
 import cash.vo.Cashbook;
 import cash.vo.Member;
 

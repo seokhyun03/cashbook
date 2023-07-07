@@ -1,4 +1,4 @@
-package cash.model;
+package cash.dao;
 
 import java.sql.*;
 import java.util.*;

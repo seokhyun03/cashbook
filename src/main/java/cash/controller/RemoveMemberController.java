@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import cash.dao.*;
 import cash.vo.*;
-import cash.model.*;
 
 /**
  * Servlet implementation class RemoveMemberCOntroller
