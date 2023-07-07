@@ -17,6 +17,12 @@ public class Member {
 		this.createdate = createdate;
 	}
 	
+	@Override
+	public String toString() {
+		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", updatedate=" + updatedate
+				+ ", createdate=" + createdate + "]";
+	}
+	
 	public String getMemberId() {
 		return memberId;
 	}
@@ -40,11 +46,5 @@ public class Member {
 	}
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
-	}
-	
-	@Override
-	public String toString() {
-		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", updatedate=" + updatedate
-				+ ", createdate=" + createdate + "]";
 	}
 }

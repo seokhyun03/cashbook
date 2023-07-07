@@ -17,6 +17,12 @@ public class Hashtag {
 		this.createdate = createdate;
 	}
 	
+	@Override
+	public String toString() {
+		return "Hashtag [cashbookNo=" + cashbookNo + ", word=" + word + ", updatedate=" + updatedate + ", createdate="
+				+ createdate + "]";
+	}
+	
 	public int getCashbookNo() {
 		return cashbookNo;
 	}
@@ -40,11 +46,5 @@ public class Hashtag {
 	}
 	public void setCreatedate(String createdate) {
 		this.createdate = createdate;
-	}
-	
-	@Override
-	public String toString() {
-		return "Hashtag [cashbookNo=" + cashbookNo + ", word=" + word + ", updatedate=" + updatedate + ", createdate="
-				+ createdate + "]";
 	}
 }
