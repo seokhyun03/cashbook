@@ -16,13 +16,11 @@ public class Hashtag {
 		this.updatedate = updatedate;
 		this.createdate = createdate;
 	}
-	
 	@Override
 	public String toString() {
 		return "Hashtag [cashbookNo=" + cashbookNo + ", word=" + word + ", updatedate=" + updatedate + ", createdate="
 				+ createdate + "]";
 	}
-	
 	public int getCashbookNo() {
 		return cashbookNo;
 	}

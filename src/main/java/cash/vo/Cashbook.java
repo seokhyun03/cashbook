@@ -24,7 +24,6 @@ public class Cashbook {
 		this.updatedate = updatedate;
 		this.createdate = createdate;
 	}
-	
 	@Override
 	public String toString() {
 		return "Cashbook [cashbookNo=" + cashbookNo + ", memberId=" + memberId + ", category=" + category

@@ -16,13 +16,11 @@ public class Member {
 		this.updatedate = updatedate;
 		this.createdate = createdate;
 	}
-	
 	@Override
 	public String toString() {
 		return "Member [memberId=" + memberId + ", memberPw=" + memberPw + ", updatedate=" + updatedate
 				+ ", createdate=" + createdate + "]";
 	}
-	
 	public String getMemberId() {
 		return memberId;
 	}
