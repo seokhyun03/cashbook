@@ -12,18 +12,11 @@ import cash.service.MemberService;
 import cash.vo.*;
 
 @SuppressWarnings("serial")
-@WebServlet("/login")
+@WebServlet("/off/login")
 public class LoginController extends HttpServlet {
 	private MemberService memberService;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// session 인증 검사 코드
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") != null) {
-			response.sendRedirect(request.getContextPath()+"/calendar");
-			return;
-		}
-		
 		request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 	}
 

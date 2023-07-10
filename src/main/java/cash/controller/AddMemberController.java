@@ -11,18 +11,12 @@ import javax.servlet.http.HttpSession;
 import cash.service.MemberService;
 import cash.vo.*;
 
-@WebServlet("/addMember")
+@WebServlet("/off/addMember")
 public class AddMemberController extends HttpServlet {
 	private MemberService memberService;
 	
 	@Override // 회원가입 폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 세션 유효검사(null일 때)
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") != null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		// addMember.jsp로 포워드
 		request.getRequestDispatcher("/WEB-INF/view/addMember.jsp").forward(request, response);
 		
@@ -30,12 +24,6 @@ public class AddMemberController extends HttpServlet {
 	
 	@Override // 회원가입 액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 세션 유효검사(null일 때)
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") != null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		// request.getParameter()
 		Member member = new Member();
 		member.setMemberId(request.getParameter("memberId"));

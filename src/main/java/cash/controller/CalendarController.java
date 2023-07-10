@@ -11,18 +11,13 @@ import cash.service.CashbookService;
 import cash.service.HashtagService;
 import cash.vo.*;
 
-@WebServlet("/calendar")
+@WebServlet("/on/calendar")
 public class CalendarController extends HttpServlet {
 	private CashbookService cashbookService;
 	private HashtagService hashtagService;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 세션 인증 검사
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		Member member = (Member)session.getAttribute("loginMember");
 		
 		// view에 넘겨줄 달력정보(모델값)

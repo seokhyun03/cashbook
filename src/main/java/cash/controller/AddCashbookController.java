@@ -12,19 +12,16 @@ import cash.service.CashbookService;
 import cash.vo.*;
 
 
-@WebServlet("/addCashbook")
+@WebServlet("/on/addCashbook")
 public class AddCashbookController extends HttpServlet {
 	private CashbookService cashbookService;
 	
 	@Override // 캐시북 추가 폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 세션 유효성 검사(로그인 확인)
+		// 로그인 아이디 변수 저장
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		String memberId = ((Member)session.getAttribute("loginMember")).getMemberId();
+		
 		// 파라미터 유효성 검사
 		if(request.getParameter("cashbookDate") == null) {
 			response.sendRedirect(request.getContextPath()+"/calendar");

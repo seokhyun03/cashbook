@@ -11,23 +11,17 @@ import javax.servlet.http.HttpSession;
 import cash.service.MemberService;
 import cash.vo.*;
 
-@WebServlet("/removeMember")
+@WebServlet("/on/removeMember")
 public class RemoveMemberController extends HttpServlet {
 	private MemberService memberService;
 	
 	// 비밀번호 입력 폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		request.getRequestDispatcher("WEB-INF/view/removeMember.jsp").forward(request, response);
 	}
 	// 탈퇴
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
 		String memberPw = request.getParameter("memberPw");
 		
 		Member member = new Member();

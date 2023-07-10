@@ -14,17 +14,12 @@ import cash.vo.*;
 
 import java.util.*;
 
-@WebServlet("/cashbookByTag")
+@WebServlet("/on/cashbookByTag")
 public class CashbookListByTagController extends HttpServlet {
 	private CashbookService cashbookService;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 세션 유효성 검사(로그인 확인)
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
-			return;
-		}
 		Member member = (Member)session.getAttribute("loginMember");
 		
 		int targetYear = Integer.parseInt(request.getParameter("targetYear"));
