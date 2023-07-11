@@ -1,8 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="cash.vo.*" %>
-<%
-	Member member = (Member)session.getAttribute("loginMember");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -21,7 +17,7 @@
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-dark">id</th>
-					<td><%=member.getMemberId()%></td>
+					<td>${member.getMemberId()}</td>
 				</tr>
 				<tr>
 					<th class="table-dark">pw확인</th>

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="cash.vo.*" %>
-<%
-	Member member = (Member)request.getAttribute("member");
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,7 +17,7 @@
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-dark">id</th>
-					<td><%=member.getMemberId()%></td>
+					<td>${member.getMemberId()}</td>
 				</tr>
 				<tr>
 					<th class="table-dark">pw</th>
@@ -28,11 +25,11 @@
 				</tr>
 				<tr>
 					<th class="table-dark">updatedate</th>
-					<td><%=member.getUpdatedate()%></td>
+					<td>${member.getUpdatedate()}</td>
 				</tr>
 				<tr>
 					<th class="table-dark">createdate</th>
-					<td><%=member.getCreatedate()%></td>
+					<td>${member.getCreatedate()}</td>
 				</tr>
 			</table>
 		<a href="${pageContext.request.contextPath}/on/modifyMember" class="btn btn-dark btn-block">회원정보수정</a>

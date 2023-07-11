@@ -17,6 +17,9 @@ public class RemoveMemberController extends HttpServlet {
 	
 	// 비밀번호 입력 폼
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Member member = (Member)session.getAttribute("loginMember");
+		request.setAttribute("member", member);
 		request.getRequestDispatcher("WEB-INF/view/removeMember.jsp").forward(request, response);
 	}
 	// 탈퇴

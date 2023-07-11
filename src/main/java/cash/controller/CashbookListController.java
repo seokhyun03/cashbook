@@ -59,6 +59,7 @@ public class CashbookListController extends HttpServlet {
 
 		List<Cashbook> list = cashbookService.getCashbookListByDate(member.getMemberId(), targetYear, targetMonth+1, targetDate, beginRow, rowPerPage);
 		
+		request.setAttribute("member", member);
 		request.setAttribute("targetYear", targetYear);
 		request.setAttribute("targetMonth", targetMonth);
 		request.setAttribute("targetDate", targetDate);
@@ -72,9 +73,4 @@ public class CashbookListController extends HttpServlet {
 		// 이번달 달력에 가계목록의 모델값을 셋팅
 		request.getRequestDispatcher("/WEB-INF/view/cashbookList.jsp").forward(request, response);
 	}
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-
 }
