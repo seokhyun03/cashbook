@@ -7,7 +7,7 @@
 </head>
 <body>
 	<h1>캐시북 추가</h1>
-	<form method="post" action="${pageContext.request.contextPath}/addCashbook">
+	<form method="post" action="${pageContext.request.contextPath}/on/addCashbook">
 		<table border="1">
 			<tr>
 				<th>아이디</th>

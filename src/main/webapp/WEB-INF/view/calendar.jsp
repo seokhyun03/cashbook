@@ -23,11 +23,14 @@
 	<!-- 자바코드(제어문) : JSTL 사용 -->
 	<div class="container">
 		<h1>${targetYear}년 ${targetMonth+1}월</h1>
-		<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
-		<a href="${pageContext.request.contextPath}/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
+		<div>
+			현재 접속자 수 : ${currentCounter}&nbsp;오늘 접속자 수 : ${count}&nbsp;누적 접속자 수 : ${totalCount}
+		</div>
+		<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
+		<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
 		<h2>이달의 해시태그</h2>
 		<c:forEach var="m" items="${hashtagList}">
-			<a href="${pageContext.request.contextPath}/cashbookByTag?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">${m.word}(${m.cnt})</a>
+			<a href="${pageContext.request.contextPath}/on/cashbookByTag?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">${m.word}(${m.cnt})</a>
 		</c:forEach>
 		<table class="table table-bordered" style="table-layout: fixed;">
 			<tr>

@@ -15,9 +15,9 @@
 <body>
 	<div class="container">
 		<h1>${targetYear}년 ${targetMonth+1}월 #${word}</h1>
-		<a href="${pageContext.request.contextPath}/calendar" class="btn btn-dark btn-block">이전으로</a>
-		<a href="${pageContext.request.contextPath}/logout" class="btn btn-dark btn-block">로그아웃</a>
-		<a href="${pageContext.request.contextPath}/memberOne" class="btn btn-dark btn-block">회원정보</a>
+		<a href="${pageContext.request.contextPath}/on/calendar" class="btn btn-dark btn-block">이전으로</a>
+		<a href="${pageContext.request.contextPath}/on/logout" class="btn btn-dark btn-block">로그아웃</a>
+		<a href="${pageContext.request.contextPath}/on/memberOne" class="btn btn-dark btn-block">회원정보</a>
 		<table class="table table-bordered">
 			<tr>
 				<th class="table-dark">수입/지출</th>
@@ -35,20 +35,20 @@
 			</c:forEach>
 		</table>
 		<c:if test="${startPage>1}">
-			<a href="${pageContext.request.contextPath}/cashbookList?currentPage=${startPage-pagePerPage}">이전</a>
+			<a href="${pageContext.request.contextPath}/on/cashbookList?currentPage=${startPage-pagePerPage}">이전</a>
 		</c:if>
 		<c:forEach var="i" begin="${startPage}" end="${endPage}" step="1">
 			<c:if test="${i==currentPage}">
 				${i}
 			</c:if>
 			<c:if test="${i!=currentPage}">
-				<a href="${pageContext.request.contextPath}/cashbookList?currentPage=${i}">
+				<a href="${pageContext.request.contextPath}/on/cashbookList?currentPage=${i}">
 					${i}
 				</a>
 			</c:if>
 		</c:forEach>
 		<c:if test="${endPage!=lastPage}">
-			<a href="${pageContext.request.contextPath}/cashbookList?currentPage=${startPage+pagePerPage}">다음</a>
+			<a href="${pageContext.request.contextPath}/on/cashbookList?currentPage=${startPage+pagePerPage}">다음</a>
 		</c:if>
 	</div>
 </body>

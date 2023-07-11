@@ -15,10 +15,10 @@
 <body>
 	<div class="container">
 		<h1>${targetYear}년 ${targetMonth+1}월 ${targetDate}일</h1>
-		<a href="${pageContext.request.contextPath}/calendar" class="btn btn-dark btn-block">이전으로</a>
-		<a href="${pageContext.request.contextPath}/addCashbook?cashbookDate=${cashbookDate}" class="btn btn-dark btn-block">추가</a>
-		<a href="${pageContext.request.contextPath}/logout" class="btn btn-dark btn-block">로그아웃</a>
-		<a href="${pageContext.request.contextPath}/memberOne" class="btn btn-dark btn-block">회원정보</a>
+		<a href="${pageContext.request.contextPath}/on/calendar" class="btn btn-dark btn-block">이전으로</a>
+		<a href="${pageContext.request.contextPath}/on/addCashbook?cashbookDate=${cashbookDate}" class="btn btn-dark btn-block">추가</a>
+		<a href="${pageContext.request.contextPath}/on/logout" class="btn btn-dark btn-block">로그아웃</a>
+		<a href="${pageContext.request.contextPath}/on/memberOne" class="btn btn-dark btn-block">회원정보</a>
 		<table class="table table-bordered">
 			<tr>
 				<th class="table-dark">수입/지출</th>

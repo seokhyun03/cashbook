@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<h1>회원가입</h1>
-		<form method="post" action="${pageContext.request.contextPath}/addMember">
+		<form method="post" action="${pageContext.request.contextPath}/off/addMember">
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-dark">id</th>

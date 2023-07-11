@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 		<h1>회원탈퇴</h1>
-		<form method="post" action="${pageContext.request.contextPath}/removeMember">
+		<form method="post" action="${pageContext.request.contextPath}/on/removeMember">
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-dark">id</th>

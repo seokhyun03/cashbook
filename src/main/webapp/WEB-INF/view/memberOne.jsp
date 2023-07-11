@@ -35,8 +35,8 @@
 					<td><%=member.getCreatedate()%></td>
 				</tr>
 			</table>
-		<a href="${pageContext.request.contextPath}/modifyMember" class="btn btn-dark btn-block">회원정보수정</a>
-		<a href="${pageContext.request.contextPath}/removeMember" class="btn btn-dark btn-block">회원탈퇴</a>
+		<a href="${pageContext.request.contextPath}/on/modifyMember" class="btn btn-dark btn-block">회원정보수정</a>
+		<a href="${pageContext.request.contextPath}/on/removeMember" class="btn btn-dark btn-block">회원탈퇴</a>
 	</div>
 </body>
 </html>

@@ -13,7 +13,7 @@
 <body>
 	<div class="container">
 		<h1>로그인</h1>
-		<form method="post" action="${pageContext.request.contextPath}/login">
+		<form method="post" action="${pageContext.request.contextPath}/off/login">
 			<table class="table table-bordered">
 				<tr>
 					<th class="table-dark">id</th>
@@ -25,7 +25,7 @@
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-dark btn-block">로그인</button>
-			<a href="${pageContext.request.contextPath}/addMember" class="btn btn-dark btn-block">회원가입</a>
+			<a href="${pageContext.request.contextPath}/off/addMember" class="btn btn-dark btn-block">회원가입</a>
 		</form>
 	</div>
 </body>
