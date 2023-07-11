@@ -26,12 +26,13 @@ public class LoginController extends HttpServlet {
 		
 		Member member = new Member(memberId, memberPw, null, null);
 		
+		memberService = new MemberService();
 		Member loginMember = memberService.getMemberById(member);
 		
 		// 로그인 실패
 		if(loginMember == null) {
 			System.out.println("로그인 실패");
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath()+"/off/login");
 			return;
 		} 
 		
@@ -39,7 +40,7 @@ public class LoginController extends HttpServlet {
 		HttpSession session = request.getSession();
 		System.out.println("로그인 성공");
 		session.setAttribute("loginMember", loginMember);
-		response.sendRedirect(request.getContextPath()+"/calendar");
+		response.sendRedirect(request.getContextPath()+"/on/calendar");
 	}
 
 }

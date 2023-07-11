@@ -32,11 +32,11 @@ public class RemoveMemberController extends HttpServlet {
 		
 		if(row==0) {	// 회원탈퇴 실패시
 			// removeMember.jsp view를 이동하는 controller를 리다이렉트
-			response.sendRedirect(request.getContextPath() + "/removeMember");
+			response.sendRedirect(request.getContextPath() + "/on/removeMember");
 		}else if(row==1) {	// 회원탈퇴 성공시
 			// login.jsp view를 이동하는 controller를 리다이렉트
 			session.invalidate();
-			response.sendRedirect(request.getContextPath() + "/login");
+			response.sendRedirect(request.getContextPath() + "/off/login");
 		}else {
 			System.out.println("remove member error!");
 		}

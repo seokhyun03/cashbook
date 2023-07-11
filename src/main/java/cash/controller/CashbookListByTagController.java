@@ -61,10 +61,4 @@ public class CashbookListByTagController extends HttpServlet {
 		
 		request.getRequestDispatcher("/WEB-INF/view/cashbookListByTag.jsp").forward(request, response);
 	}
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-	}
-
 }

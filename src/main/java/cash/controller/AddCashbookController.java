@@ -40,7 +40,7 @@ public class AddCashbookController extends HttpServlet {
 		// 세션 유효성 검사(로그인 확인)
 		HttpSession session = request.getSession();
 		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/login");
+			response.sendRedirect(request.getContextPath()+"/off/login");
 			return;
 		}
 		
@@ -57,6 +57,7 @@ public class AddCashbookController extends HttpServlet {
 		cashbook.setPrice(price);
 		cashbook.setMemo(memo);
 		
+		cashbookService = new CashbookService();
 		int row = cashbookService.addCashbook(cashbook);
 		// DB입력 실패
 		if(row == -1) {

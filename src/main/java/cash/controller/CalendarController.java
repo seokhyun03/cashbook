@@ -10,11 +10,13 @@ import javax.servlet.http.*;
 import cash.service.CashbookService;
 import cash.service.HashtagService;
 import cash.vo.*;
+import cash.service.CounterService;
 
 @WebServlet("/on/calendar")
 public class CalendarController extends HttpServlet {
 	private CashbookService cashbookService;
 	private HashtagService hashtagService;
+	private CounterService counterService;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -70,8 +72,14 @@ public class CalendarController extends HttpServlet {
 		int todayMonth = today.get(Calendar.MONTH);
 		int todayDate = today.get(Calendar.DATE);
 		// 모델을 호출(DAO 타겟 월의 수입/지출 데이터)
+		cashbookService = new CashbookService();
+		hashtagService = new HashtagService();
 		List<Cashbook> list = cashbookService.getPriceByMonth(member.getMemberId(), targetYear, targetMonth+1);
 		List<Map<String, Object>> hashtagList = hashtagService.getWordCountByMonth(member.getMemberId(), targetYear, targetMonth+1);
+		
+		counterService = new CounterService();
+		int count = counterService.getCounter();
+		int totalCount = counterService.getCounterAll();
 		
 		// 뷰에 값넘기기(request 속성)
 		request.setAttribute("targetYear", targetYear);
@@ -89,6 +97,9 @@ public class CalendarController extends HttpServlet {
 		
 		request.setAttribute("list", list);
 		request.setAttribute("hashtagList", hashtagList);
+		
+		request.setAttribute("count", count);
+		request.setAttribute("totalCount", totalCount);
 		// 달력을 출력하는 뷰
 		request.getRequestDispatcher("/WEB-INF/view/calendar.jsp").forward(request, response);
 	}

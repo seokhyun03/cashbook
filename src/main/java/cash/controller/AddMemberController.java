@@ -28,14 +28,15 @@ public class AddMemberController extends HttpServlet {
 		Member member = new Member();
 		member.setMemberId(request.getParameter("memberId"));
 		member.setMemberPw(request.getParameter("memberPw"));
-
+		
+		memberService = new MemberService();
 		int row = memberService.addMember(member);
 		if(row==0) {	// 회원가입 실패시
 			// addMember.jsp view를 이동하는 controller를 리다이렉트
-			response.sendRedirect(request.getContextPath() + "/addMember");
+			response.sendRedirect(request.getContextPath() + "/off/addMember");
 		}else if(row==1) {	// 회원가입 성공시
 			// login.jsp view를 이동하는 controller를 리다이렉트
-			response.sendRedirect(request.getContextPath() + "/login");
+			response.sendRedirect(request.getContextPath() + "/off/login");
 		}else {
 			System.out.println("add member error!");
 		}
