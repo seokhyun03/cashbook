@@ -18,6 +18,7 @@ public class HashtagService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			hashtagDao = new HashtagDao();
 			list = hashtagDao.selectWordCountByMonth(conn, memberId, targetYear, targetMonth);
 		} catch (Exception e) {
 			e.printStackTrace();

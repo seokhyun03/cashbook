@@ -18,6 +18,7 @@ public class CashbookService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			cashbookDao = new CashbookDao();
 			list = cashbookDao.selectPriceByMonth(conn, memberId, targetYear, targetMonth);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -36,6 +37,7 @@ public class CashbookService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			cashbookDao = new CashbookDao();
 			list = cashbookDao.selectCashbookListByDate(conn, memberId, targetYear, targetMonth, targetDate, beginRow, rowPerPage);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -54,6 +56,7 @@ public class CashbookService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			cashbookDao = new CashbookDao();
 			count = cashbookDao.selectCashbookListByDateCnt(conn, memberId, targetYear, targetMonth, targetDate);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,6 +93,7 @@ public class CashbookService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			cashbookDao = new CashbookDao();
 			count = cashbookDao.selectCashbookListByHashtagCnt(conn, memberId, targetYear, targetMonth, word);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -135,6 +139,8 @@ public class CashbookService {
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
 			conn.setAutoCommit(false);
+			cashbookDao = new CashbookDao();
+			hashtagDao = new HashtagDao();
 			int cashbookNo = cashbookDao.insertCashbook(conn, cashbook);
 			
 			// 입력 성공 시 캐시북 메모에서 해시태그 존재 여부 확인

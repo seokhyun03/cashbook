@@ -16,6 +16,7 @@ public class MemberService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			memberDao = new MemberDao();
 			member = memberDao.selectMemberOne(conn, memberId);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -34,6 +35,7 @@ public class MemberService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			memberDao = new MemberDao();
 			row = memberDao.insertMember(conn, member);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -52,6 +54,7 @@ public class MemberService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			memberDao = new MemberDao();
 			row = memberDao.deleteMember(conn, member);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,6 +73,7 @@ public class MemberService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			memberDao = new MemberDao();
 			returnMember = memberDao.selectMemberById(conn, paramMember);
 		} catch (Exception e) {
 			e.printStackTrace();

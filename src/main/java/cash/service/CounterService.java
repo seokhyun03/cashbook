@@ -17,6 +17,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			counterDao = new CounterDao();
 			counterDao.insertCounter(conn);
 		} catch(Exception e){	
 			e.printStackTrace();
@@ -34,6 +35,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			counterDao = new CounterDao();
 			counterDao.updateCounter(conn);
 		} catch(Exception e){	
 			e.printStackTrace();
@@ -52,6 +54,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			counterDao = new CounterDao();
 			count = counterDao.selectCounterCurdate(conn);
 		} catch(Exception e){	
 			e.printStackTrace();
@@ -71,6 +74,7 @@ public class CounterService {
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			counterDao = new CounterDao();
 			count = counterDao.selectCounterAll(conn);
 		} catch(Exception e){	
 			e.printStackTrace();
