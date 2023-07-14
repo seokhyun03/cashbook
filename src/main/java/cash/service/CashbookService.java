@@ -1,9 +1,17 @@
 package cash.service;
 
-import java.sql.*;
-import java.util.*;
-import cash.vo.*;
-import cash.dao.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import cash.dao.CashbookDao;
+import cash.dao.HashtagDao;
+import cash.vo.Cashbook;
+import cash.vo.Hashtag;
 
 public class CashbookService {
 	private CashbookDao cashbookDao;
@@ -50,14 +58,36 @@ public class CashbookService {
 		}
 		return list;
 	}
-	public int getCashbookListByDateCnt(String memberId, int targetYear, int targetMonth, int targetDate) {
-		int count = 0;
+	public Map<String, Object> getCashbookListByDateCnt(int currentPage, String memberId, int targetYear, int targetMonth, int targetDate) {
+		int totalRow = 0;
 		Connection conn = null;
-		
+		Map<String, Object> map = null;
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
 			cashbookDao = new CashbookDao();
-			count = cashbookDao.selectCashbookListByDateCnt(conn, memberId, targetYear, targetMonth, targetDate);
+			totalRow = cashbookDao.selectCashbookListByDateCnt(conn, memberId, targetYear, targetMonth, targetDate);
+			
+			int rowPerPage = 10;
+			int beginRow = (currentPage-1)*rowPerPage;
+			int lastPage = totalRow / rowPerPage;
+			if (totalRow % rowPerPage != 0) {
+				lastPage += 1;
+			}
+		
+			int pagePerPage = 10;
+			int startPage = (currentPage-1) / pagePerPage * pagePerPage + 1;
+			int endPage = startPage + pagePerPage - 1;
+			if(endPage > lastPage) {
+				endPage = lastPage;
+			}
+			map = new HashMap<>();
+			map.put("beginRow", beginRow);
+			map.put("rowPerPage", rowPerPage);
+			map.put("pagePerPage", pagePerPage);
+			map.put("lastPage", lastPage);
+			map.put("startPage", startPage);
+			map.put("endPage", endPage);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -67,7 +97,7 @@ public class CashbookService {
 				e.printStackTrace();
 			}
 		}
-		return count;
+		return map;
 	}	
 	public List<Cashbook> getCashbookListByHashtag(String memberId, int targetYear, int targetMonth, String word, int beginRow, int rowPerPage) {
 		List<Cashbook> list = null;
@@ -88,13 +118,15 @@ public class CashbookService {
 		return list;
 	}
 	public int getCashbookListByHashtagCnt(String memberId, int targetYear, int targetMonth, String word) {
-		int count = 0;
+		int totalRow = 0;
 		Connection conn = null;
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
 			cashbookDao = new CashbookDao();
-			count = cashbookDao.selectCashbookListByHashtagCnt(conn, memberId, targetYear, targetMonth, word);
+			totalRow = cashbookDao.selectCashbookListByHashtagCnt(conn, memberId, targetYear, targetMonth, word);
+			
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -104,7 +136,7 @@ public class CashbookService {
 				e.printStackTrace();
 			}
 		}
-		return count;
+		return totalRow;
 	}
 	public int addCashbook(Cashbook cashbook) {
 		int row = 0;

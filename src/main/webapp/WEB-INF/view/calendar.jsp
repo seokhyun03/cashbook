@@ -61,7 +61,7 @@
 							<td class="table-warning" style="height: 120px">
 								<c:if test="${i % 7 == 0}">
 									<div>
-										<a class="text-danger" style="text-decoration: none;" href="${pageContext.request.contextPath}/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+										<a class="text-danger" style="text-decoration: none;" href="${pageContext.request.contextPath}/on/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 											${d}
 										</a>	
 									</div>
@@ -80,7 +80,7 @@
 								</c:if>
 								<c:if test="${i % 7 == 6}">
 									<div>
-										<a class="text-primary" style="text-decoration: none;" href="${pageContext.request.contextPath}/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+										<a class="text-primary" style="text-decoration: none;" href="${pageContext.request.contextPath}/on/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 											${d}
 										</a>	
 									</div>
@@ -99,7 +99,7 @@
 								</c:if>
 								<c:if test="${!(i % 7 == 0) && !(i % 7 == 6)}">
 									<div>
-										<a class="text-body" style="text-decoration: none;" href="${pageContext.request.contextPath}/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+										<a class="text-body" style="text-decoration: none;" href="${pageContext.request.contextPath}/on/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 											${d}
 										</a>	
 									</div>
@@ -122,7 +122,7 @@
 							<td style="height: 120px">
 								<c:if test="${i % 7 == 0}">
 									<div>
-										<a class="text-danger" style="text-decoration: none;" href="${pageContext.request.contextPath}/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+										<a class="text-danger" style="text-decoration: none;" href="${pageContext.request.contextPath}/on/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 											${d}
 										</a>	
 									</div>
@@ -141,7 +141,7 @@
 								</c:if>
 								<c:if test="${i % 7 == 6}">
 									<div>
-										<a class="text-primary" style="text-decoration: none;" href="${pageContext.request.contextPath}/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+										<a class="text-primary" style="text-decoration: none;" href="${pageContext.request.contextPath}/on/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 											${d}
 										</a>	
 									</div>
@@ -160,7 +160,7 @@
 								</c:if>
 								<c:if test="${!(i % 7 == 0) && !(i % 7 == 6)}">
 									<div>
-										<a class="text-body" style="text-decoration: none;" href="${pageContext.request.contextPath}/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
+										<a class="text-body" style="text-decoration: none;" href="${pageContext.request.contextPath}/on/cashbook?targetYear=${targetYear}&targetMonth=${targetMonth}&targetDate=${d}">
 											${d}
 										</a>	
 									</div>
