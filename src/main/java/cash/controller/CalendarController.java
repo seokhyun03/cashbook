@@ -71,6 +71,7 @@ public class CalendarController extends HttpServlet {
 		int todayYear = today.get(Calendar.YEAR);
 		int todayMonth = today.get(Calendar.MONTH);
 		int todayDate = today.get(Calendar.DATE);
+		
 		// 모델을 호출(DAO 타겟 월의 수입/지출 데이터)
 		cashbookService = new CashbookService();
 		hashtagService = new HashtagService();
