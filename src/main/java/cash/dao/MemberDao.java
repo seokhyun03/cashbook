@@ -59,16 +59,16 @@ public class MemberDao {
 	}
 	
 	// 비밀번호 변경
-	public int updateMember(Connection conn, Member member, String prePw) throws Exception {
+	public int updateMember(Connection conn, Member member, String newPw) throws Exception {
 		int row = 0;
 		
 		PreparedStatement stmt = null;
 		String sql = "UPDATE member SET member_pw = ?, createdate = NOW() WHERE member_id = ? AND member_pw = PASSWORD(?)";
 		try {
 			stmt = conn.prepareStatement(sql);
-			stmt.setString(1, member.getMemberPw());
+			stmt.setString(1, newPw);
 		    stmt.setString(2,member.getMemberId());
-	        stmt.setString(3, prePw);
+		    stmt.setString(3, member.getMemberPw());
 			row = stmt.executeUpdate();
 		} catch (SQLException e) {
 			throw e;

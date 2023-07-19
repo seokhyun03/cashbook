@@ -20,16 +20,16 @@
 					<td>${member.getMemberId()}</td>
 				</tr>
 				<tr>
-					<th class="table-dark">이전pw</th>
-					<td><input type="password" name="memberPrePw"></td>
-				</tr>
-				<tr>
-					<th class="table-dark">새pw</th>
+					<th class="table-dark">현재pw</th>
 					<td><input type="password" name="memberPw"></td>
 				</tr>
 				<tr>
+					<th class="table-dark">새pw</th>
+					<td><input type="password" name="memberNewPw"></td>
+				</tr>
+				<tr>
 					<th class="table-dark">pw확인</th>
-					<td><input type="password" name="memberPwCk"></td>
+					<td><input type="password" name="memberNewPwCk"></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-dark btn-block">비밀번호 변경</button>

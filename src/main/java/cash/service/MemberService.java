@@ -67,6 +67,25 @@ public class MemberService {
 		}
 		return row;
 	}
+	public int modifyMember(Member member, String newPw) {
+		int row = 0;
+		Connection conn = null;
+		
+		try {
+			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			memberDao = new MemberDao();
+			row = memberDao.updateMember(conn, member, newPw);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return row;
+	}
 	public Member getMemberById(Member paramMember) {
 		Member returnMember = null;
 		Connection conn = null;
