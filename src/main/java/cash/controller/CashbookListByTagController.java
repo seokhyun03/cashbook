@@ -26,7 +26,7 @@ public class CashbookListByTagController extends HttpServlet {
 		int targetMonth = Integer.parseInt(request.getParameter("targetMonth"));
 		String word = request.getParameter("word");
 		
-		CashbookDao cashbookDao = new CashbookDao();
+		cashbookService = new CashbookService();
 		int currentPage = 1;
 		if(request.getParameter("currentPage") != null) {
 			currentPage = Integer.parseInt(request.getParameter("currentPage"));

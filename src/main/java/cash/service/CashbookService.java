@@ -105,6 +105,7 @@ public class CashbookService {
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbId, dbPw);
+			cashbookDao = new CashbookDao();
 			list = cashbookDao.selectCashbookListByHashtag(conn, memberId, targetYear, targetMonth, word, beginRow, rowPerPage);
 		} catch (Exception e) {
 			e.printStackTrace();
