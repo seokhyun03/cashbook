@@ -39,6 +39,7 @@ public class CalendarController extends HttpServlet {
 			// API에서 자동으로 Calendar.MONTH값으로 -1가 입력되면 월 12, 년 - 1
 			firstDay.set(Calendar.MONTH, targetMonth);
 			targetMonth = firstDay.get(Calendar.MONTH);
+			targetYear = firstDay.get(Calendar.YEAR);
 		}
 		firstDay.set(Calendar.DATE, 1);	// 1일
 		
