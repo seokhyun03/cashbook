@@ -37,12 +37,7 @@ public class AddCashbookController extends HttpServlet {
 
 	@Override // 캐시북 추가 액션
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 세션 유효성 검사(로그인 확인)
 		HttpSession session = request.getSession();
-		if(session.getAttribute("loginMember") == null) {
-			response.sendRedirect(request.getContextPath()+"/off/login");
-			return;
-		}
 		
 		String memberId = ((Member)session.getAttribute("loginMember")).getMemberId();
 		String category = request.getParameter("category");
@@ -69,7 +64,7 @@ public class AddCashbookController extends HttpServlet {
 		int targetYear = Integer.parseInt(cashbook.getCashbookDate().substring(0, 4));
 		int targetMonth = Integer.parseInt(cashbook.getCashbookDate().substring(5, 7)) - 1;
 		int targetDate = Integer.parseInt(cashbook.getCashbookDate().substring(8, 10));
-		response.sendRedirect(request.getContextPath()+"/cashbook?targetYear="+targetYear+"&targetMonth="+targetMonth+"&targetDate="+targetDate);
+		response.sendRedirect(request.getContextPath()+"/on/cashbook?targetYear="+targetYear+"&targetMonth="+targetMonth+"&targetDate="+targetDate);
 	}
 
 }
