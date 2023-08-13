@@ -21,15 +21,15 @@
 				</tr>
 				<tr>
 					<th class="table-dark">현재pw</th>
-					<td><input type="password" name="memberPw"></td>
+					<td><input type="password" name="memberPw" required="required"></td>
 				</tr>
 				<tr>
 					<th class="table-dark">새pw</th>
-					<td><input type="password" name="memberNewPw"></td>
+					<td><input type="password" name="memberNewPw" required="required"></td>
 				</tr>
 				<tr>
 					<th class="table-dark">pw확인</th>
-					<td><input type="password" name="memberNewPwCk"></td>
+					<td><input type="password" name="memberNewPwCk" required="required"></td>
 				</tr>
 			</table>
 			<button type="submit" class="btn btn-dark btn-block">비밀번호 변경</button>
