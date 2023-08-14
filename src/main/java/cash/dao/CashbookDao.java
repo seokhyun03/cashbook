@@ -210,4 +210,82 @@ public class CashbookDao {
 		}
 		return cashbookNo;
 	}
+	// 캐시북 수정
+	public int updateCashbook(Connection conn, Cashbook cashbook) throws Exception {
+		int row = 0;
+		
+		PreparedStatement stmt = null;
+		String sql = "UPDATE cashbook SET category=?, price=?, memo=?, updatedate=NOW() WHERE cashbook_no=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, cashbook.getCategory());
+			stmt.setInt(2, cashbook.getPrice());
+			stmt.setString(3, cashbook.getMemo());
+			stmt.setInt(4, cashbook.getCashbookNo());
+			row = stmt.executeUpdate();
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+		}
+		return row;
+	}
+	
+	// 캐시북 1개 조회
+	public Cashbook selectCashbookOne(Connection conn, Cashbook cashbook) throws Exception {
+		Cashbook c = null;
+		
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT category, cashbook_date cashbookDate, price, memo FROM cashbook WHERE cashbook_no=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, cashbook.getCashbookNo());
+			rs = stmt.executeQuery();
+			if(rs.next()) {
+	        	c = new Cashbook();
+	        	c.setCashbookNo(cashbook.getCashbookNo());
+	        	c.setCategory(rs.getString("category"));
+	        	c.setCashbookDate(rs.getString("cashbookDate"));
+	        	c.setPrice(rs.getInt("price"));
+	        	c.setMemo(rs.getString("memo"));
+	        }
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+		}
+		return c;
+	}
+	
+	public int deleteCashbook(Connection conn, Cashbook cashbook)  throws Exception {
+		int row = 0;
+		
+		PreparedStatement stmt = null;
+		String sql = "DELETE FROM cashbook WHERE cashbook_no=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, cashbook.getCashbookNo());
+			row = stmt.executeUpdate();
+			System.out.println(stmt);
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+		}
+		
+		return row;
+	}
 }
