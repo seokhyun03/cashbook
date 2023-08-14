@@ -20,8 +20,8 @@ public class MemberOneController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		HttpSession session = request.getSession();
 		Member loginMember = (Member)session.getAttribute("loginMember");
-		// 모델 값 구하기(dao 메서드 호출)
-
+	
+		memberService = new MemberService();
 		Member member = memberService.getMemberOne(loginMember.getMemberId());
 		// member 출력하는(포워딩 대상) memberOne.jsp에도 공유되어야한다
 		// request가 공유되니까 request안에 넣어서 공유

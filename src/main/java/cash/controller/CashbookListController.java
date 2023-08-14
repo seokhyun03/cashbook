@@ -28,7 +28,7 @@ public class CashbookListController extends HttpServlet {
 		int targetDate = Integer.parseInt(request.getParameter("targetDate"));
 		
 		String cashbookDate = "" + targetYear;
-		if(targetMonth<10) {
+		if(targetMonth+1<10) {
 			cashbookDate += "-0" + (targetMonth+1);
 		} else {
 			cashbookDate += "-" + (targetMonth+1);
