@@ -15,16 +15,24 @@
 <body>
 	<div class="container">
 		<h1>${targetYear}년 ${targetMonth+1}월 ${targetDate}일</h1>
-		<a href="${pageContext.request.contextPath}/on/calendar" class="btn btn-dark btn-block">이전으로</a>
-		<a href="${pageContext.request.contextPath}/on/addCashbook?cashbookDate=${cashbookDate}" class="btn btn-dark btn-block">추가</a>
-		<a href="${pageContext.request.contextPath}/on/logout" class="btn btn-dark btn-block">로그아웃</a>
-		<a href="${pageContext.request.contextPath}/on/memberOne" class="btn btn-dark btn-block">회원정보</a>
+		<div class="row">
+			<div class="col-sm-6">
+				<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth}" class="btn btn-dark btn-block">이전으로</a>
+				<a href="${pageContext.request.contextPath}/on/addCashbook?cashbookDate=${cashbookDate}" class="btn btn-dark btn-block">추가</a>
+			</div>
+			<div class="col-sm-6" align="right">
+				<a href="${pageContext.request.contextPath}/on/memberOne" class="btn btn-dark btn-block">회원정보</a>
+				<a href="${pageContext.request.contextPath}/on/logout" class="btn btn-dark btn-block">로그아웃</a>
+			</div>
+		</div>
 		<table class="table table-bordered">
 			<tr>
 				<th class="table-dark">수입/지출</th>
 				<th class="table-dark">금액</th>
 				<th class="table-dark">메모</th>
 				<th class="table-dark">작성날짜</th>
+				<th class="table-dark">수정</th>
+				<th class="table-dark">삭제</th>
 			</tr>
 			<c:forEach var="c" items="${list}">
 				<tr>
@@ -32,6 +40,12 @@
 					<td>${c.price}</td>
 					<td>${c.memo}</td>
 					<td>${c.createdate}</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/on/modifyCashbook?cashbookNo=${c.cashbookNo}" class="btn btn-dark btn-block">수정</a>
+					</td>
+					<td>
+						<a href="${pageContext.request.contextPath}/on/removeCashbook?cashbookNo=${c.cashbookNo}&cashbookDate=${cashbookDate}" class="btn btn-dark btn-block">삭제</a>
+					</td>
 				</tr>
 			</c:forEach>
 		</table>

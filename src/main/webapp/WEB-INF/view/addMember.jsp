@@ -12,20 +12,34 @@
 </head>
 <body>
 	<div class="container">
-		<h1>회원가입</h1>
-		<form method="post" action="${pageContext.request.contextPath}/off/addMember">
-			<table class="table table-bordered">
-				<tr>
-					<th class="table-dark">id</th>
-					<td><input type="text" name="memberId"></td>
-				</tr>
-				<tr>
-					<th class="table-dark">pw</th>
-					<td><input type="password" name="memberPw"></td>
-				</tr>
-			</table>
-			<button type="submit" class="btn btn-dark btn-block">회원가입</button>
-		</form>
+		<div>
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+		</div>
+		<div class="row">
+			<div class="col-sm-4">
+			</div>
+			<div class="col-sm-4">
+				<h1  align="center">회원가입</h1>
+				<br><br>
+				<form method="post" action="${pageContext.request.contextPath}/off/addMember">
+					<table class="table table-bordered">
+						<tr>
+							<th class="table-dark" width="30%">id</th>
+							<td><input type="text" name="memberId" required="required" style="width:100%"></td>
+						</tr>
+						<tr>
+							<th class="table-dark" width="30%">pw</th>
+							<td><input type="password" name="memberPw" required="required" style="width:100%"></td>
+						</tr>
+					</table>
+					<div align="center">
+						<button type="submit" class="btn btn-dark btn-block">회원가입</button>
+					</div>
+				</form>
+			</div>
+			<div class="col-sm-4">
+			</div>
+		</div>
 	</div>
 </body>
 </html>

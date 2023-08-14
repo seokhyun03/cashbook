@@ -22,16 +22,29 @@
 	 -->
 	<!-- 자바코드(제어문) : JSTL 사용 -->
 	<div class="container">
-		<h1>${targetYear}년 ${targetMonth+1}월</h1>
-		<div>
-			현재 접속자 수 : ${currentCounter}&nbsp;오늘 접속자 수 : ${count}&nbsp;누적 접속자 수 : ${totalCount}
+		<div align="center">
+			<h1>
+				<a class="btn btn-dark btn-block" href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">◀</a>
+				${targetYear}년 ${targetMonth+1}월
+				<a class="btn btn-dark btn-block" href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">▶</a>
+			</h1>
 		</div>
-		<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth-1}">이전</a>
-		<a href="${pageContext.request.contextPath}/on/calendar?targetYear=${targetYear}&targetMonth=${targetMonth+1}">다음</a>
-		<h2>이달의 해시태그</h2>
-		<c:forEach var="m" items="${hashtagList}">
-			<a href="${pageContext.request.contextPath}/on/cashbookByTag?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">${m.word}(${m.cnt})</a>
-		</c:forEach>
+		<div align="right">
+			현재 접속자 수 : ${currentCounter}&nbsp;오늘 접속자 수 : ${count}&nbsp;누적 접속자 수 : ${totalCount}
+			<br>
+			<a href="${pageContext.request.contextPath}/on/memberOne" class="btn btn-dark btn-block">회원정보</a>
+			<a href="${pageContext.request.contextPath}/on/logout" class="btn btn-dark btn-block">로그아웃</a>
+		</div>
+		<div align="center">
+			<h2>이달의 해시태그</h2>
+			<ul class="nav">
+				<c:forEach var="m" items="${hashtagList}">
+					<li class="nav-item">
+						<a class="nav-link" href="${pageContext.request.contextPath}/on/cashbookByTag?targetYear=${targetYear}&targetMonth=${targetMonth}&word=${m.word}">${m.word} <span class="badge bg-info">${m.cnt}</span></a>
+					 </li>
+				</c:forEach>
+			</ul>
+		</div>
 		<table class="table table-bordered" style="table-layout: fixed;">
 			<tr>
 				<th class="table-dark">일</th>
