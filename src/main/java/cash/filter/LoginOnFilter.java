@@ -26,7 +26,7 @@ public class LoginOnFilter extends HttpFilter implements Filter {
 			res.sendRedirect(req.getContextPath()+"/login");
 			return;
 		}
-		String memberId = ((Member)session.getAttribute("loginMember")).getMemberId();
+		
 		chain.doFilter(request, response);
 	}
 }
