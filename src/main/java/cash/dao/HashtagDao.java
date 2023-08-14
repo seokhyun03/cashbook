@@ -59,4 +59,26 @@ public class HashtagDao {
 		}
 		return row;
 	}
+	
+	// 해시태그 삭제
+	public int deleteHashtag(Connection conn, Hashtag hashtag) throws Exception {
+		int row = 0;
+		
+		PreparedStatement stmt = null;
+		String sql = "DELETE FROM hashtag WHERE cashbook_no=?";
+		try {
+			stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, hashtag.getCashbookNo());
+			row = stmt.executeUpdate();    
+		} catch (SQLException e) {
+			throw e;
+		} finally {
+			try {
+				stmt.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}	
+		}
+		return row;
+	}
 }
